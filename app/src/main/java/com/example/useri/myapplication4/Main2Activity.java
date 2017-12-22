@@ -67,7 +67,9 @@ public class Main2Activity extends AppCompatActivity {
                                     Toast.makeText(Main2Activity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Intent i = new Intent(getApplicationContext(), Main3Activity.class);
+                                    Toast.makeText(Main2Activity.this, "Successfully Signed in.",
+                                            Toast.LENGTH_SHORT).show();
+                                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(i);
                                 }
                             }

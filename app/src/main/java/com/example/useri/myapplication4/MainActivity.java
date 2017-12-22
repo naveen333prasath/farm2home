@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
     private ProgressBar progressBar;
     private TextView textView;
+    private TextView textView1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         textView=(TextView)findViewById(R.id.text) ;
+        textView1= findViewById(R.id.text1);
 
         btn = (Button) findViewById(R.id.button);
 
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
+
 
                 //authenticate user
                 auth.signInWithEmailAndPassword(email, password)
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
-                                progressBar.setVisibility(View.GONE);
+
                                 if (!task.isSuccessful()) {
                                     // there was an error
                                     if (password.length() < 6) {
@@ -98,8 +100,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, Main2Activity.class);
                 startActivity(i);
-                finish();
 
+
+            }
+        });
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent j = new Intent(MainActivity.this,resetpassword.class);
+                startActivity(j);
             }
         });
     }
