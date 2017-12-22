@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+    android:paddingRight="24dp"
+    android:paddingLeft="24dp"
+    android:background="#fd4e5e">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="64dp">
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:padding="4dp"
+                android:src="@drawable/catlg3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="16dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingTop="2dp"
+                android:text="BIOMASS GASSIFICATION "
+                android:textColor="#fff"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="16dp"
+                android:drawablePadding="16dp"
+                android:hint="Email Address"
+                android:textColorHint="#fe97a0"
+                android:maxLines="1"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/bkgrd_redlogin1"
+                android:id="@+id/editText_emailAddress"
+                android:layout_marginTop="32dp"
+                android:drawableRight="@drawable/ic_person_outline_red_400_24dp"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="16dp"
+                android:hint="password"
+                android:textColorHint="#fa97a0"
+                android:maxLines="1"
+                android:id="@+id/password"
+                android:inputType="textPassword"
+                android:drawableRight="@drawable/ic_lock_red_400_24dp"
+                android:background="@drawable/bkgrd_redlogin1"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="16dp"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" LOGIN"
+                android:clickable="true"
+                android:textColor="#f16371"
+                android:id="@+id/button"
+                android:padding="16dp"
+                android:textSize="18sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:textAllCaps="false"
+                android:background="@drawable/bkgd_red_2"/>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Didn't Login yet?,Click for Signup"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

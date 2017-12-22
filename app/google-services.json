@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "228587347857",
+    "firebase_url": "https://biogaslsogin.firebaseio.com",
+    "project_id": "biogaslsogin",
+    "storage_bucket": "biogaslsogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228587347857:android:f61fab4f1165b7d6",
+        "android_client_info": {
+          "package_name": "com.example.useri.myapplication4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228587347857-jjs7n3qrastvlgujvm6kibmhqv3sf9c9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBdpz3cP0XMN9Fa0bwn82FyIP5tx_AUt0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
