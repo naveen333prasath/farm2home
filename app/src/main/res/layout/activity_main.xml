@@ -7,7 +7,7 @@
     android:paddingTop="16dp"
     android:paddingRight="24dp"
     android:paddingLeft="24dp"
-    android:background="#fd4e5e">
+    android:background="#3398FF">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@
                 android:text="BIOMASS GASSIFICATION "
                 android:textColor="#fff"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                 />
 
 
             <EditText
@@ -46,30 +46,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:background="@drawable/bkgrd_redlogin1"
+                android:background="@drawable/background_login"
                 android:drawablePadding="16dp"
-                android:drawableRight="@drawable/ic_person_outline_red_400_24dp"
+                android:drawableRight="@drawable/ic_person_outline_black_24dp"
                 android:ems="10"
                 android:hint="Email Address"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:padding="16dp"
-                android:textColorHint="#fe97a0" />
+                android:textColor="@color/black_overlay"
+                android:textColorHint="@color/black_overlay" />
 
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/bkgrd_redlogin1"
+                android:background="@drawable/background_login"
                 android:drawablePadding="16dp"
-                android:drawableRight="@drawable/ic_lock_red_400_24dp"
+                android:drawableRight="@drawable/ic_lock_outline_black_24dp"
                 android:ems="10"
                 android:hint="password"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="16dp"
-                android:textColorHint="#fa97a0" />
+                android:textColor="@color/black_overlay"
+
+                android:textColorHint="@color/black_overlay" />
 
             <Button
                 android:id="@+id/button"
@@ -83,7 +86,7 @@
                 android:padding="16dp"
                 android:text=" LOGIN"
                 android:textAllCaps="false"
-                android:textColor="#f16371"
+                android:textColor="#3398FF"
                 android:textSize="18sp" />
             <TextView
                 android:id="@+id/text1"
@@ -92,7 +95,7 @@
                 android:text="Forgot Your Password?"
                 android:layout_gravity="center"
                 android:textSize="15sp"
-                android:textStyle="bold" />
+                />
 
 
             <TextView
@@ -103,7 +106,7 @@
                 android:text="Not A Member yet? Get Registerd now"
                 android:layout_gravity="center"
                 android:textSize="15sp"
-                android:textStyle="bold" />
+                 />
 
 
 

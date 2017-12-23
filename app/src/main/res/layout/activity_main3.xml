@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fd4e5e"
+    android:background="@color/white"
     tools:context="com.example.useri.myapplication4.Main3Activity">
 
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="wrap_content"
-        android:layout_height="550dp">
+        android:layout_height="560dp">
 
     </FrameLayout>
 
@@ -20,10 +20,11 @@
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="#fd4e5e"
+        android:layout_marginBottom="0dp"
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:background="?android:attr/windowBackground"
+        android:backgroundTint="#3398FF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

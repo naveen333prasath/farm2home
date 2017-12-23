@@ -13,14 +13,23 @@
         android:layout_centerVertical="true"
         android:src="@drawable/logo" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@id/progressBar"
+        android:id="@+id/textView"/>
     <ProgressBar
-        android:id="@+id/progressBar2"
+        android:id="@+id/progressBar"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="100dp"
-        android:layout_height="15dp"
-        android:layout_below="@+id/LogoImage"
-        android:background="@color/white"
-        android:layout_centerHorizontal="true" />
+        android:layout_height="20sp"
+        android:indeterminate="false"
+        android:layout_below="@id/LogoImage"
+        android:layout_centerHorizontal="true"
+        android:max="100"
+        android:progress="20"
+        android:theme="@style/AppTheme.WhiteAccent"
+        />
 
 
 </RelativeLayout>

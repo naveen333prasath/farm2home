@@ -1,5 +1,6 @@
 package com.example.useri.myapplication4;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class resetpassword extends AppCompatActivity {
     private Button btnReset, btnBack;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,24 +48,44 @@ public class resetpassword extends AppCompatActivity {
             public void onClick(View v) {
 
                 String email = inputEmail.getText().toString().trim();
+                progressDialog = new ProgressDialog(resetpassword.this);
+                progressDialog.setMessage("Signing in..."); // Setting Message
+                progressDialog.setTitle(""); // Setting Title
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+                progressDialog.show(); // Display Progress Dialog
+                progressDialog.setCancelable(false);
+                new Thread(new Runnable() {
+                    public void run() {
+                        try {
+                            Thread.sleep(10000);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
+
 
                 if (TextUtils.isEmpty(email)) {
+                    progressDialog.dismiss();
                     Toast.makeText(getApplication(), "Enter your registered email id", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                progressBar.setVisibility(View.VISIBLE);
+
                 auth.sendPasswordResetEmail(email)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
+                                    progressDialog.dismiss();
                                     Toast.makeText(resetpassword.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
                                 } else {
+                                    progressDialog.dismiss();
                                     Toast.makeText(resetpassword.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
                                 }
 
-                                progressBar.setVisibility(View.GONE);
+
                             }
                         });
             }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fd4e5e"
+    android:background="#3398FF"
     tools:context="com.example.useri.myapplication4.Main2Activity">
 
 
@@ -28,61 +28,57 @@
         android:text="SINGN UP "
         android:textColor="#fff"
         android:textSize="24sp"
-        android:textStyle="bold" />
-
+         />
     <EditText
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        android:drawablePadding="16dp"
-        android:hint="Email Address"
-        android:textColorHint="#fe97a0"
-        android:maxLines="1"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/bkgrd_redlogin1"
         android:id="@+id/editText_emailAddress"
-        android:layout_marginTop="30dp"
-        android:drawableRight="@drawable/ic_person_outline_red_400_24dp"/>
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/background_login"
+        android:drawablePadding="16dp"
+        android:drawableRight="@drawable/ic_person_outline_black_24dp"
+        android:ems="10"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:padding="16dp"
+        android:textColor="@color/black_overlay"
+        android:textColorHint="@color/black_overlay" />
 
     <EditText
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        android:hint="password"
-        android:textColorHint="#fa97a0"
-        android:maxLines="1"
         android:id="@+id/password"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/background_login"
+        android:drawablePadding="16dp"
+        android:drawableRight="@drawable/ic_lock_outline_black_24dp"
+        android:ems="10"
+        android:hint="password"
         android:inputType="textPassword"
-        android:drawableRight="@drawable/ic_lock_red_400_24dp"
-        android:background="@drawable/bkgrd_redlogin1"
-        android:layout_marginTop="30dp"
-        android:drawablePadding="16dp"/>
+        android:maxLines="1"
+        android:padding="16dp"
+        android:textColor="@color/black_overlay"
+
+        android:textColorHint="@color/black_overlay" />
 
     <Button
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:text=" Sign in"
-        android:clickable="true"
-        android:textColor="#f16371"
         android:id="@+id/button"
-        android:padding="16dp"
-        android:textSize="18sp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="16dp"
-        android:textAllCaps="false"
-        android:background="@drawable/bkgd_red_2"/>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="match_parent"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        style="@android:style/Widget.Holo.Light.ProgressBar" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bkgd_red_2"
+        android:clickable="true"
+        android:padding="16dp"
+        android:text="SIGN IN"
+        android:textAllCaps="false"
+        android:textColor="#3398FF"
+        android:textSize="18sp" />
+
 
 
 </LinearLayout>

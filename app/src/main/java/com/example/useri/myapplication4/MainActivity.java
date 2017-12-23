@@ -14,7 +14,9 @@ package com.example.useri.myapplication4;
         import android.widget.ProgressBar;
         import android.widget.TextView;
         import android.widget.Toast;
-
+        import android.app.ProgressDialog;
+        import android.os.Handler;
+        import android.os.Message;
         import com.google.android.gms.tasks.OnCompleteListener;
         import com.google.android.gms.tasks.Task;
         import com.google.firebase.auth.AuthResult;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView textView;
     private TextView textView1;
+    ProgressDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = inputEmail.getText().toString();
                 final String password = inputPassword.getText().toString();
+                progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog.setMessage("Logging in..."); // Setting Message
+                progressDialog.setTitle(""); // Setting Title
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+                progressDialog.show(); // Display Progress Dialog
+                progressDialog.setCancelable(false);
+                new Thread(new Runnable() {
+                    public void run() {
+                        try {
+                            Thread.sleep(10000);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -79,14 +99,18 @@ public class MainActivity extends AppCompatActivity {
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
 
+
                                 if (!task.isSuccessful()) {
                                     // there was an error
                                     if (password.length() < 6) {
+                                                progressDialog.dismiss();
                                         inputPassword.setError(getString(R.string.minimum_password));
                                     } else {
+                                        progressDialog.dismiss();
                                         Toast.makeText(MainActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
+                                    progressDialog.dismiss();
                                     Intent intent = new Intent(MainActivity.this, Main3Activity.class);
                                     startActivity(intent);
                                     finish();
@@ -95,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                         });
             }
         });
+
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
