@@ -12,6 +12,21 @@ import android.content.Intent;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class splashscreen extends Activity {
@@ -22,6 +37,8 @@ public class splashscreen extends Activity {
     private int progressStatus = 0;
     private Handler handler = new Handler();
     private TextView text;
+    private FirebaseAuth.AuthStateListener authListener;
+    private FirebaseAuth auth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,12 +82,19 @@ public class splashscreen extends Activity {
             public void run() {
                 // Close SplashScreenActivity.class
                 finish();
-
+                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null) {
+                    // user auth state is changed - user is null
+                    // launch login activity
+                    Intent intent = new Intent(splashscreen.this, Main3Activity.class);
+                    startActivity(intent);
+                }
+                else{
                 // Start MainActivity.class
                 Intent myIntent = new Intent(splashscreen.this,
                         MainActivity.class);
                 startActivity(myIntent);
-            }
+            }}
         };
 
         // Start the timer

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3398FF">
+    android:background="#3B5998">
 
     <ImageView
         android:id="@+id/LogoImage"
@@ -11,7 +11,7 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/logo" />
+        android:src="@drawable/farm" />
 
     <TextView
         android:layout_width="wrap_content"

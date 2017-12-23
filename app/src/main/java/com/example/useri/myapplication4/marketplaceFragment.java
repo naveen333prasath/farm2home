@@ -13,12 +13,12 @@ import android.widget.Toast;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link tutorialBlankFragment.OnFragmentInteractionListener} interface
+ * {@link marketplaceFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link tutorialBlankFragment#newInstance} factory method to
+ * Use the {@link marketplaceFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class tutorialBlankFragment extends Fragment {
+public class marketplaceFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,7 +30,7 @@ public class tutorialBlankFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public tutorialBlankFragment() {
+    public marketplaceFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +40,11 @@ public class tutorialBlankFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment tutorialBlankFragment.
+     * @return A new instance of fragment marketplaceFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static tutorialBlankFragment newInstance(String param1, String param2) {
-        tutorialBlankFragment fragment = new tutorialBlankFragment();
+    public static marketplaceFragment newInstance(String param1, String param2) {
+        marketplaceFragment fragment = new marketplaceFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,7 +65,7 @@ public class tutorialBlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial_blank, container, false);
+        return inflater.inflate(R.layout.fragment_marketplace, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -81,7 +81,7 @@ public class tutorialBlankFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            Toast.makeText(context,"Informations",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Marketplace",Toast.LENGTH_LONG).show();
         }
     }
 

@@ -81,7 +81,7 @@ public class generalBlankFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            Toast.makeText(context,"GENERAL activity",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Stoties",Toast.LENGTH_LONG).show();
         }
     }
 

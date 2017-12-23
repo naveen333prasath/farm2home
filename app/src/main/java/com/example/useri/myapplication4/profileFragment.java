@@ -1,5 +1,6 @@
 package com.example.useri.myapplication4;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,18 +8,36 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link tutorialBlankFragment.OnFragmentInteractionListener} interface
+ * {@link profileFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link tutorialBlankFragment#newInstance} factory method to
+ * Use the {@link profileFragment#newInstance} factory method to
  * create an instance of this fragment.
+ *
  */
-public class tutorialBlankFragment extends Fragment {
+
+public class profileFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,10 +46,12 @@ public class tutorialBlankFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private FirebaseAuth.AuthStateListener authListener;
+    private FirebaseAuth auth;
     private OnFragmentInteractionListener mListener;
+    ProgressDialog progressDialog;
 
-    public tutorialBlankFragment() {
+    public profileFragment() {
         // Required empty public constructor
     }
 
@@ -40,11 +61,11 @@ public class tutorialBlankFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment tutorialBlankFragment.
+     * @return A new instance of fragment profileFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static tutorialBlankFragment newInstance(String param1, String param2) {
-        tutorialBlankFragment fragment = new tutorialBlankFragment();
+    public static profileFragment newInstance(String param1, String param2) {
+        profileFragment fragment = new profileFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,8 +86,50 @@ public class tutorialBlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tutorial_blank, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        Button btn = (Button) view.findViewById(R.id.check);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                progressDialog = new ProgressDialog(getActivity());
+                progressDialog.setMessage("Logged Out..."); // Setting Message
+                progressDialog.setTitle(""); // Setting Title
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+                progressDialog.show(); // Display Progress Dialog
+                progressDialog.setCancelable(false);
+                new Thread(new Runnable() {
+                    public void run() {
+                        try {
+                            Thread.sleep(10000);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }).start();
+                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user == null) {
+                    // user auth state is changed - user is null
+                    // launch login activity
+                    Intent intent = new Intent(getActivity().getApplication(), MainActivity.class);
+                    startActivity(intent);
+                }
+
+//                Intent intent = new Intent(getActivity().getApplication(), MainActivity.class);
+//                startActivity(intent);
+            else{
+                    Toast.makeText(getActivity().getApplication(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+
+                }}
+
+        });
+    return view;
     }
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

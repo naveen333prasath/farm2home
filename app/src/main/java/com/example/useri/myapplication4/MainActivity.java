@@ -79,11 +79,13 @@ public class MainActivity extends AppCompatActivity {
                 }).start();
 
                 if (TextUtils.isEmpty(email)) {
+                    progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)) {
+                    progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
                     return;
                 }

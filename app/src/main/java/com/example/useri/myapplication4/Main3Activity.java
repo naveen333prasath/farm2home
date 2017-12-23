@@ -29,6 +29,12 @@ public class Main3Activity extends AppCompatActivity {
                 case R.id.navigation_notifications:
                     transaction.replace(R.id.content,new faqsBlankFragment()).commit();
                     return true;
+                case R.id.navigation_notification:
+                    transaction.replace(R.id.content,new marketplaceFragment()).commit();
+                    return true;
+                case R.id.navigation_notificat:
+                    transaction.replace(R.id.content,new profileFragment()).commit();
+                    return true;
             }
             return false;
         }

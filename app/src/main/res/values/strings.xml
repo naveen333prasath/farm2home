@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Biomass Gassification</string>
+    <string name="app_name">Farmbook</string>
     <string name="action_settings">Settings</string>
     <string name="email">Email</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
@@ -218,9 +218,9 @@
     <string name="donate_high">9.99 USD</string>
     <string name="donate_exception">Sorry, can not do this!</string>
     <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_home">GENERAL</string>
-    <string name="title_dashboard">TUTORIAL</string>
-    <string name="title_notifications">FAQ'S</string>
+    <string name="title_home">Stories</string>
+    <string name="title_dashboard">Info</string>
+    <string name="title_notifications">Schemes</string>
     <string name="title_activity_main3">Main3Activity</string>
 
     <!-- TODO: Remove or change this placeholder text -->

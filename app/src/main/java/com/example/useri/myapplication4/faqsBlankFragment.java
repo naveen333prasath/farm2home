@@ -81,7 +81,7 @@ public class faqsBlankFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            Toast.makeText(context,"faqs activity",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Schemes",Toast.LENGTH_LONG).show();
         }
     }
 
