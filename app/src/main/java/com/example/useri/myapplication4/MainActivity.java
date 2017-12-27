@@ -22,6 +22,8 @@ package com.example.useri.myapplication4;
         import com.google.firebase.auth.AuthResult;
         import com.google.firebase.auth.FirebaseAuth;
 
+
+
 public class MainActivity extends AppCompatActivity {
     private Button btn;
     private FirebaseAuth auth;
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = inputEmail.getText().toString();
                 final String password = inputPassword.getText().toString();
-                progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog = new ProgressDialog(MainActivity.this,R.style.AppCompatAlertDialogStyle);
                 progressDialog.setMessage("Logging in..."); // Setting Message
                 progressDialog.setTitle(""); // Setting Title
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner

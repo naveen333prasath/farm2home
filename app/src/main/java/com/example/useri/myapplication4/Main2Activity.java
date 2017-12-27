@@ -39,7 +39,7 @@ public class Main2Activity extends AppCompatActivity {
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
                 progressBar.setVisibility(View.GONE);
-                progressDialog = new ProgressDialog(Main2Activity.this);
+                progressDialog = new ProgressDialog(Main2Activity.this,R.style.AppCompatAlertDialogStyle);
                 progressDialog.setMessage("Signing in..."); // Setting Message
                 progressDialog.setTitle(""); // Setting Title
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner

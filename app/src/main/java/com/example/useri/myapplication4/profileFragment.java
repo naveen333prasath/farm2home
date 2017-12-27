@@ -92,7 +92,7 @@ public class profileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                progressDialog = new ProgressDialog(getActivity());
+                progressDialog = new ProgressDialog(getActivity(),R.style.AppCompatAlertDialogStyle);
                 progressDialog.setMessage("Logged Out..."); // Setting Message
                 progressDialog.setTitle(""); // Setting Title
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
@@ -110,9 +110,11 @@ public class profileFragment extends Fragment {
                 }).start();
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user == null) {
+
                     // user auth state is changed - user is null
                     // launch login activity
-                    Intent intent = new Intent(getActivity().getApplication(), MainActivity.class);
+                    progressDialog.dismiss();
+                    Intent intent = new Intent(getActivity().getApplication(), splashscreen.class);
                     startActivity(intent);
                 }
 

@@ -2,12 +2,16 @@ package com.example.useri.myapplication4;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.SearchView;
+import android.widget.ImageView;
+import android.view.Menu;
 
 public class Main3Activity extends AppCompatActivity {
 
@@ -44,6 +48,7 @@ public class Main3Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+
 
         android.support.v4.app.FragmentManager fragmetManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction transaction = fragmetManager.beginTransaction();
