@@ -4,10 +4,22 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -29,6 +41,8 @@ public class marketplaceFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private RecyclerView story;
+    private DatabaseReference database;
 
     public marketplaceFragment() {
         // Required empty public constructor
@@ -65,8 +79,59 @@ public class marketplaceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_marketplace, container, false);
+        View view= inflater.inflate(R.layout.fragment_marketplace, container, false);
+        database= FirebaseDatabase.getInstance().getReference().child("Posts");
+        story=(RecyclerView)view.findViewById(R.id.recycle);
+        story.setHasFixedSize(true);
+        story.setLayoutManager(new LinearLayoutManager(getActivity().getApplication()));
+
+
+        return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        FirebaseRecyclerAdapter<blog,BlogViewHolder>firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<blog, BlogViewHolder>(
+
+                blog.class,
+                R.layout.story_activity,
+                BlogViewHolder.class,
+                database
+
+        ) {
+            @Override
+            protected void populateViewHolder(BlogViewHolder viewHolder, blog model, int position) {
+
+                viewHolder.setItem(model.getItem());
+                viewHolder.setprice(model.getPrice());
+                viewHolder.setImage(getActivity().getApplicationContext(),model.getImage());
+            }
+        };
+        story.setAdapter(firebaseRecyclerAdapter);
+    }
+    public static class BlogViewHolder extends RecyclerView.ViewHolder{
+               View nView;
+        public BlogViewHolder(View itemView) {
+            super(itemView);
+           nView=itemView;
+
+        }
+        public void setItem(String item){
+            TextView post_item=(TextView)nView.findViewById(R.id.storyitem);
+            post_item.setText(item);
+        }
+        public void setprice(String price){
+            TextView post_price=(TextView)nView.findViewById(R.id.storyprice);
+            post_price.setText(price);
+        }
+        public void setImage(Context ctx,String image){
+            ImageView post_image=(ImageView)nView.findViewById(R.id.storyimg);
+            Picasso.with(ctx).load(image).into(post_image);
+        }
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

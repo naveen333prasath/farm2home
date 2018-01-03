@@ -69,13 +69,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
-        android:background="#1a8cff"
+        android:background="@drawable/background_login_two"
         android:clickable="true"
         android:padding="16dp"
         android:text="SIGN IN"
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="18sp" />
+
 
 
 

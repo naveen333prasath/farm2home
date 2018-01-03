@@ -17,12 +17,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+
+
+
 public class Main2Activity extends AppCompatActivity {
     private Button btn;
     private FirebaseAuth auth;
-    private EditText inputEmail, inputPassword;
-    private ProgressBar progressBar;
+    private EditText inputEmail, inputPassword,inputName;
     ProgressDialog progressDialog;
+
+    private String userId;
+
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +36,21 @@ public class Main2Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         auth = FirebaseAuth.getInstance();
         inputEmail = (EditText) findViewById(R.id.editText_emailAddress);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         inputPassword = (EditText) findViewById(R.id.password);
         btn=(Button)findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                FirebaseAuth.getInstance();
+
+
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
-                progressBar.setVisibility(View.GONE);
+
+
+
+
+
                 progressDialog = new ProgressDialog(Main2Activity.this,R.style.AppCompatAlertDialogStyle);
                 progressDialog.setMessage("Signing in..."); // Setting Message
                 progressDialog.setTitle(""); // Setting Title
@@ -56,9 +68,11 @@ public class Main2Activity extends AppCompatActivity {
                     }
                 }).start();
 
+
+
                 if (TextUtils.isEmpty(email)) {
-                    progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                     return;
                 }
 
@@ -91,10 +105,8 @@ public class Main2Activity extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
                                 } else {
                                     progressDialog.dismiss();
-                                    Toast.makeText(Main2Activity.this, "Successfully Signed in.",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(i);
+                                    startActivity(new Intent(Main2Activity.this, farmerdb.class));
+                                    finish();
                                 }
                             }
                         });
@@ -108,10 +120,3 @@ public class Main2Activity extends AppCompatActivity {
 
     }
 }
-
-
-
-
-
-
-

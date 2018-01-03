@@ -1,13 +1,32 @@
 package com.example.useri.myapplication4;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.ResultReceiver;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.net.URI;
+import java.util.PriorityQueue;
 
 
 /**
@@ -23,10 +42,22 @@ public class generalBlankFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final int GALLERY_REQUEST=1;
+    private ImageButton image;
+    private EditText name;
+    private EditText price;
+    private Button submit;
+    private Uri image1=null;
+    private StorageReference storage;
+
+    private DatabaseReference database;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -50,22 +81,96 @@ public class generalBlankFragment extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+
     }
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_general_blank, container, false);
+        View view= inflater.inflate(R.layout.fragment_general_blank, container, false);
+          image=(ImageButton)view.findViewById(R.id.img);
+          name=(EditText)view.findViewById(R.id.item);
+          price=(EditText)view.findViewById(R.id.price);
+          submit=(Button)view.findViewById(R.id.post);
+
+
+
+          storage= FirebaseStorage.getInstance().getReference();
+          database= FirebaseDatabase.getInstance().getReference().child("Posts");
+
+         image.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent gallery=new Intent(Intent.ACTION_GET_CONTENT);
+                 gallery.setType("image/*");
+                 startActivityForResult(gallery,GALLERY_REQUEST);
+             }
+         });
+         submit.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+
+
+                 startPosting();
+
+             }
+         });
+
+
+return view;
+    }
+
+    private void startPosting() {
+
+         final String item=name.getText().toString().trim();
+         final String cost=price.getText().toString().trim();
+
+         if(!TextUtils.isEmpty(item) && !TextUtils.isEmpty(cost) && image1!=null) {
+             Toast.makeText(getActivity().getApplication(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+            StorageReference filepath=storage.child("Posts").child(image1.getLastPathSegment());
+
+
+             filepath.putFile(image1).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    Uri downloadurl=taskSnapshot.getDownloadUrl();
+                    DatabaseReference post=database.push();
+                    post.child("item").setValue(item);
+                    post.child("price").setValue(cost);
+                    post.child("image").setValue(downloadurl.toString());
+
+
+                }
+            });
+         }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GALLERY_REQUEST && resultCode == Activity.RESULT_OK);
+        image1=data.getData();
+        image.setImageURI(image1);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -81,7 +186,7 @@ public class generalBlankFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            Toast.makeText(context,"Stoties",Toast.LENGTH_LONG).show();
+            Toast.makeText(context,"Home",Toast.LENGTH_LONG).show();
         }
     }
 
