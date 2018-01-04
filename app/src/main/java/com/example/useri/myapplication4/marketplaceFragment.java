@@ -106,7 +106,7 @@ public class marketplaceFragment extends Fragment {
 
                 viewHolder.setItem(model.getItem());
                 viewHolder.setprice(model.getPrice());
-                viewHolder.setImage(getActivity().getApplicationContext(),model.getImage());
+                viewHolder.setImage(getContext(),model.getImage());
             }
         };
         story.setAdapter(firebaseRecyclerAdapter);

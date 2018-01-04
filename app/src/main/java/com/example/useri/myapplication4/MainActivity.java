@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 } else {
                                     progressDialog.dismiss();
-                                    Intent intent = new Intent(MainActivity.this, home.class);
+                                    Intent intent = new Intent(MainActivity.this, Main3Activity.class);
                                     startActivity(intent);
                                     finish();
                                 }

@@ -149,7 +149,7 @@ public class farmerdb extends AppCompatActivity {
                 mFirebaseDatabase.child(userId).setValue(user);
 
              progressDialog.dismiss();
-             startActivity(new Intent(farmerdb.this, home.class));
+             startActivity(new Intent(farmerdb.this, Main3Activity.class));
 
          }
      });

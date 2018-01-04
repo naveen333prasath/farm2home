@@ -86,7 +86,7 @@ public class splashscreen extends Activity {
                 if (user != null) {
                     // user auth state is changed - user is null
                     // launch login activity
-                    Intent intent = new Intent(splashscreen.this, home.class);
+                    Intent intent = new Intent(splashscreen.this,Main3Activity.class);
                     startActivity(intent);
                 }
                 else{
