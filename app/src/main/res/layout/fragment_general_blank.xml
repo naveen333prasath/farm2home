@@ -10,16 +10,15 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal">
     <ImageButton
         android:id="@+id/img"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:background="@drawable/post_out"
         android:contentDescription="@string/dialog_ok"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+       />
 
     <LinearLayout
         android:layout_width="match_parent"

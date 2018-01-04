@@ -37,7 +37,7 @@ import java.util.PriorityQueue;
  * Use the {@link generalBlankFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class generalBlankFragment extends Fragment {
+public class homefragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,7 +61,7 @@ public class generalBlankFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public generalBlankFragment() {
+    public homefragment() {
         // Required empty public constructor
     }
 
@@ -107,57 +107,62 @@ public class generalBlankFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_general_blank, container, false);
-          image=(ImageButton)view.findViewById(R.id.img);
-          name=(EditText)view.findViewById(R.id.item);
-          price=(EditText)view.findViewById(R.id.price);
-          submit=(Button)view.findViewById(R.id.post);
+        image=(ImageButton)view.findViewById(R.id.img);
+        name=(EditText)view.findViewById(R.id.item);
+        price=(EditText)view.findViewById(R.id.price);
+        submit=(Button)view.findViewById(R.id.post);
 
 
 
-          storage= FirebaseStorage.getInstance().getReference();
-          database= FirebaseDatabase.getInstance().getReference().child("Posts");
+        storage= FirebaseStorage.getInstance().getReference();
+        database= FirebaseDatabase.getInstance().getReference().child("Posts");
 
-         image.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view) {
-                 Intent gallery=new Intent(Intent.ACTION_GET_CONTENT);
-                 gallery.setType("image/*");
-                 startActivityForResult(gallery,GALLERY_REQUEST);
-             }
-         });
-         submit.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View view1) {
-                 startPosting();
-
-             }
-         });
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gallery=new Intent(Intent.ACTION_GET_CONTENT);
+                gallery.setType("image/*");
+                startActivityForResult(gallery,GALLERY_REQUEST);
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
 
-return view;
+                startPosting();
+
+            }
+        });
+
+
+        return view;
     }
 
     private void startPosting() {
 
-          String item=name.getText().toString().trim();
-          String cost=price.getText().toString().trim();
+        final String item=name.getText().toString().trim();
+        final String cost=price.getText().toString().trim();
 
-         if(!TextUtils.isEmpty(item) && !TextUtils.isEmpty(cost) && image1!=null){
-             StorageReference filepath = storage.child("Posts").child(image1.getLastPathSegment());
-             filepath.putFile(image1).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                 @Override
-                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                     Uri downloadurl=taskSnapshot.getDownloadUrl();
-                     DatabaseReference post=database.push();
-                     post.child("item").setValue(item);
-                     post.child("price").setValue(price);
-                     post.child("image").setValue(downloadurl.toString());
-                 }
+        if(!TextUtils.isEmpty(item) && !TextUtils.isEmpty(cost) && image1!=null) {
+            Toast.makeText(getActivity().getApplication(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+            StorageReference filepath=storage.child("Posts").child(image1.getLastPathSegment());
 
-             });
-             Toast.makeText(getActivity().getApplication(),"Home",Toast.LENGTH_LONG).show();
 
-         }
+            filepath.putFile(image1).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    Uri downloadurl=taskSnapshot.getDownloadUrl();
+                    DatabaseReference post=database.push();
+                    post.child("item").setValue(item);
+                    post.child("price").setValue(cost);
+                    post.child("image").setValue(downloadurl.toString());
+
+
+                }
+            });
+        }
     }
 
     @Override

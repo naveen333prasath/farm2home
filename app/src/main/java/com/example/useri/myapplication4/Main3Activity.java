@@ -20,7 +20,7 @@ public class Main3Activity extends AppCompatActivity {
             android.support.v4.app.FragmentTransaction transaction = fragmetManager.beginTransaction();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    transaction.replace(R.id.content,new generalBlankFragment()).commit();
+                    transaction.replace(R.id.content,new homefragment()).commit();
                     return true;
 
                 case R.id.profile:
