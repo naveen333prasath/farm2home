@@ -155,7 +155,8 @@ return view;
                  }
 
              });
-             Toast.makeText(getActivity().getApplication(),"Home",Toast.LENGTH_LONG).show();
+
+
 
          }
     }

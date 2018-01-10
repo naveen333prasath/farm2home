@@ -145,7 +145,7 @@ public class homefragment extends Fragment {
         final String cost=price.getText().toString().trim();
 
         if(!TextUtils.isEmpty(item) && !TextUtils.isEmpty(cost) && image1!=null) {
-            Toast.makeText(getActivity().getApplication(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity().getApplication(),"Succesfully posted", Toast.LENGTH_LONG).show();
             StorageReference filepath=storage.child("Posts").child(image1.getLastPathSegment());
 
 

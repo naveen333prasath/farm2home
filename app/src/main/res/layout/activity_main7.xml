@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.useri.myapplication4.Main7Activity"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="280dp"
+        android:layout_height="165dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/farm1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAY USING"
+        android:textSize="20sp"
+        android:textColor="#000"
+        android:layout_gravity="center_horizontal"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:src="@drawable/paytm_logo"
+        android:layout_marginTop="40dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/paypal"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/credit" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="Thank you visit again"
+        android:textColor="#000"
+        android:textSize="15sp" />
+</LinearLayout>

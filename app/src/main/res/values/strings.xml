@@ -230,5 +230,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="your_item_will_be_displayed_here">item</string>
     <string name="price">Your Item will be displayed here</string>
+    <string name="title_activity_main5">Main5Activity</string>
 
 </resources>

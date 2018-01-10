@@ -3,6 +3,7 @@
     package="com.example.useri.myapplication4">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -25,7 +26,12 @@
         <activity android:name=".farmerdb" />
         <activity
             android:name=".Main3Activity"
-            android:label="@string/title_activity_main3"></activity>
+            android:label="@string/title_activity_main3" />
+        <activity
+            android:name=".Main5Activity"
+            android:label="@string/title_activity_main5" />
+        <activity android:name=".Main6Activity" />
+        <activity android:name=".Main7Activity"></activity>
     </application>
 
 </manifest>

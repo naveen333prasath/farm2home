@@ -9,9 +9,16 @@
     tools:context="com.example.useri.myapplication4.Main2Activity">
 
 
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+
+</ScrollView>
 
     <ImageView
-        android:layout_width="150dp"
+        android:layout_width="173dp"
         android:layout_height="120dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="0dp"
@@ -27,8 +34,8 @@
         android:paddingTop="30dp"
         android:text="SINGN UP "
         android:textColor="@color/black"
-        android:textSize="24sp"
-         />
+        android:textSize="20sp"
+        />
     <EditText
         android:id="@+id/editText_emailAddress"
         android:layout_width="310dp"
@@ -42,6 +49,8 @@
         android:inputType="textEmailAddress"
         android:maxLines="1"
         android:padding="16dp"
+        android:textSize="14dp"
+
         android:textColor="@color/black_overlay"
         android:textColorHint="@color/black_overlay" />
 
@@ -52,6 +61,8 @@
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:drawablePadding="16dp"
+        android:textSize="14dp"
+
         android:drawableRight="@drawable/ic_lock_outline_black_24dp"
         android:ems="10"
         android:hint="password"
@@ -76,6 +87,8 @@
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="18sp" />
+
+
 
 
 

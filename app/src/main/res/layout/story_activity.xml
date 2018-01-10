@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:layout_margin="20dp">
+    android:layout_margin="20dp"
+    android:id="@+id/cvv">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,20 +15,55 @@
             android:layout_height="200dp"
             android:contentDescription="@string/about_git_hub"
             android:src="@drawable/post_out" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/storyitem"
-            android:textSize="15sp"
-            android:text="@string/your_item_will_be_displayed_here"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Item :"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/storyitem"
+                android:textSize="15sp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/your_item_will_be_displayed_here"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price :"/>
+
+
+            <TextView
+                android:id="@+id/storyprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+
+                android:text="@string/price"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/storyprice"
-            android:textSize="15sp"
-            android:layout_marginTop="15dp"
-            android:text="@string/price"/>
+            android:layout_gravity="center"
+            android:drawableRight="@drawable/ic_shopping_cart_black_24dp"
+
+            android:text="  ADD TO CART"/>
+
+
     </LinearLayout>
+
+
 
 </android.support.v7.widget.CardView>

@@ -20,8 +20,8 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="96dp"
+                android:layout_width="226dp"
+                android:layout_height="89dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="60dp"
                 android:adjustViewBounds="true"
@@ -33,7 +33,7 @@
                 android:id="@+id/editText_emailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="20dp"
                 android:drawablePadding="16dp"
                 android:drawableRight="@drawable/ic_person_outline_black_24dp"
                 android:ems="10"
@@ -41,6 +41,7 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:padding="16dp"
+                android:textSize="14dp"
                 android:textColor="@color/black_overlay"
                 android:textColorHint="@color/black_overlay" />
 
@@ -56,6 +57,8 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="16dp"
+                android:textSize="14dp"
+
                 android:textColor="@color/black_overlay"
 
                 android:textColorHint="@color/black_overlay" />
@@ -82,7 +85,7 @@
                 android:layout_gravity="center"
                 android:text="Forgot Your Password?"
                 android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textSize="14dp"
                 android:layout_marginTop="20dp"/>
 
             <TextView
@@ -90,6 +93,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:textSize="14dp"
+
                 android:text="________________OR________________"
                 android:textColor="@color/black" />
 
@@ -101,7 +106,8 @@
                 android:layout_marginTop="20dp"
                 android:text="Create new account here..!"
                 android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:textSize="14dp"
+                />
 
 
         </LinearLayout>
