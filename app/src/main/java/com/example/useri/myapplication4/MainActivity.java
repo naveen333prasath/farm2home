@@ -29,9 +29,10 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText inputEmail, inputPassword;
     private ProgressBar progressBar;
-    private TextView textView;
+
     private TextView textView1;
     ProgressDialog progressDialog;
+    private Button btn1;
 
 
     @Override
@@ -50,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
         inputEmail = (EditText) findViewById(R.id.editText_emailAddress);
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        textView=(TextView)findViewById(R.id.text) ;
         textView1= findViewById(R.id.text1);
 
         btn = (Button) findViewById(R.id.button);
+        btn1=(Button)findViewById(R.id.button1);
 
 
         //Get Firebase auth instance
@@ -124,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        textView.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, Main2Activity.class);

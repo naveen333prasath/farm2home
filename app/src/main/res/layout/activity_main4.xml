@@ -4,57 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@drawable/crop9"
     android:orientation="vertical"
     tools:context="com.example.useri.myapplication4.Main4Activity">
 
-    <ImageView
-        android:layout_width="221dp"
-        android:layout_height="53dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"
-        android:adjustViewBounds="true"
-        android:padding="4dp"
-        android:src="@drawable/farm1" />
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="99dp"
-        android:layout_height="22dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:text="LOGIN AS"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/background_login_two"
-        android:clickable="true"
-        android:padding="16dp"
-        android:text=" FARMER"
-        android:textAllCaps="false"
-        android:textColor="#fff"
-        android:textSize="15sp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/background_login"
-        android:clickable="true"
-        android:padding="16dp"
-        android:text=" BUYER"
-        android:textAllCaps="false"
-        android:textColor="#fff"
-        android:textSize="15sp" />
+        <ImageView
+            android:layout_width="259dp"
+            android:layout_height="47dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="80dp"
+            android:adjustViewBounds="true"
+            android:padding="4dp"
+            android:src="@drawable/farm1" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="111dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="50dp"
+            android:text="LOGIN AS"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/background_login_two"
+            android:clickable="true"
+            android:padding="16dp"
+            android:text=" FARMER"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+
+
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="310dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/background_login"
+            android:clickable="true"
+            android:padding="16dp"
+            android:text=" BUYER"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+
+
+
 
 
 

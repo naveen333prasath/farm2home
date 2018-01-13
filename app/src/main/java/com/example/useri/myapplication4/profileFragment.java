@@ -1,5 +1,6 @@
 package com.example.useri.myapplication4;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +27,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 
 /**
@@ -50,7 +54,11 @@ public class profileFragment extends Fragment {
     private FirebaseAuth auth;
     private OnFragmentInteractionListener mListener;
     ProgressDialog progressDialog;
-
+    private static final int GALLERY_REQUEST=1;
+    private ImageButton image;
+    private EditText display;
+    private Button set;
+    private Uri imageUri=null,resultUri=null;
     public profileFragment() {
         // Required empty public constructor
     }
@@ -83,11 +91,24 @@ public class profileFragment extends Fragment {
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
+        } else {
+            Toast.makeText(context,"Informations",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         Button btn = (Button) view.findViewById(R.id.check);
+        Button set=(Button)view.findViewById(R.id.set);
+        ImageButton image=(ImageButton)view.findViewById(R.id.displaypicture);
+        EditText display=(EditText)view.findViewById(R.id.disp);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,7 +147,41 @@ public class profileFragment extends Fragment {
                 }}
 
         });
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gallery=new Intent(Intent.ACTION_GET_CONTENT);
+                gallery.setType("image/*");
+                startActivityForResult(gallery,GALLERY_REQUEST);
+            }
+        });
+
     return view;
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GALLERY_REQUEST && resultCode == Activity.RESULT_OK)
+            imageUri = data.getData();
+
+
+            CropImage.activity(imageUri)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .setAspectRatio(1, 1)
+                    .start(getActivity());
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == Activity.RESULT_OK) {
+
+                 resultUri = result.getUri();
+                image.setImageURI(resultUri);
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+
     }
 
 
@@ -140,15 +195,7 @@ public class profileFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            Toast.makeText(context,"Informations",Toast.LENGTH_LONG).show();
-        }
-    }
+
 
     @Override
     public void onDetach() {

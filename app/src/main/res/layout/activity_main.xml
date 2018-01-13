@@ -7,7 +7,7 @@
     android:paddingTop="16dp"
     android:paddingRight="24dp"
     android:paddingLeft="24dp"
-    android:background="#ffff">
+    android:background="@drawable/crop91">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,45 +23,56 @@
                 android:layout_width="226dp"
                 android:layout_height="89dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="50dp"
                 android:adjustViewBounds="true"
                 android:padding="4dp"
                 android:src="@drawable/farm1" />
 
-
+<android.support.design.widget.TextInputLayout
+    android:id="@+id/input_layout_email"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/editText_emailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="50dp"
                 android:drawablePadding="16dp"
-                android:drawableRight="@drawable/ic_person_outline_black_24dp"
+                android:drawableLeft="@drawable/ic_person_outline_black_24dp"
                 android:ems="10"
                 android:hint="Email Address"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:padding="16dp"
-                android:textSize="14dp"
-                android:textColor="@color/black_overlay"
+                android:textSize="16dp"
+                android:textColor="@color/white"
                 android:textColorHint="@color/black_overlay" />
-
-            <EditText
-                android:id="@+id/password"
+</android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:drawablePadding="16dp"
-                android:drawableRight="@drawable/ic_lock_outline_black_24dp"
-                android:ems="10"
-                android:hint="password"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:padding="16dp"
-                android:textSize="14dp"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:drawablePadding="16dp"
+                    android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:padding="16dp"
+                    android:textSize="16dp"
 
-                android:textColor="@color/black_overlay"
+                    android:textColor="@color/white"
 
-                android:textColorHint="@color/black_overlay" />
+                    android:textColorHint="@color/black_overlay" />
+
+
+
+            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/button"
@@ -69,13 +80,26 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="16dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="45dp"
                 android:background="@drawable/background_login_two"
                 android:clickable="true"
                 android:padding="16dp"
                 android:text=" LOGIN"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
+                android:textSize="15sp" />
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/background_login_three"
+                android:clickable="true"
+                android:padding="16dp"
+                android:text=" SIGN UP"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
                 android:textSize="15sp" />
 
             <TextView
@@ -84,30 +108,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Forgot Your Password?"
-                android:textColor="@color/black"
+                android:textColor="#80FFFFFF"
                 android:textSize="14dp"
                 android:layout_marginTop="20dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:textSize="14dp"
 
-                android:text="________________OR________________"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="Create new account here..!"
-                android:textColor="@color/black"
-                android:textSize="14dp"
-                />
 
 
         </LinearLayout>

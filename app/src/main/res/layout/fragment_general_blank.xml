@@ -43,10 +43,11 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:hint="Enter your item"
-            android:background="@color/black_overlay"
+            android:background="@drawable/background_login_five"
+
             android:maxLines="1"
-            android:textColor="#fff"
-            android:textColorHint="#000" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black_overlay" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,10 +70,10 @@
             android:layout_width="295dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="@color/black_overlay"
+            android:background="@drawable/background_login_five"
             android:hint="Enter Your Price "
-            android:textColor="#fff"
-            android:textColorHint="#000" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black_overlay" />
 
     </LinearLayout>
     <Button
