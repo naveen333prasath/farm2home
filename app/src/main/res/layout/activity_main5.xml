@@ -15,7 +15,7 @@
         android:layout_height="50dp"
         android:iconifiedByDefault="false"
         android:queryHint="Search Here"
-        android:background="#1a8cff"
+        android:background="#FEAF59"
         android:theme="@style/SearchViewTheme"/>
     <FrameLayout
         android:id="@+id/content"

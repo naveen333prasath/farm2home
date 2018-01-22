@@ -11,7 +11,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class User {
 
     public String name;
-    public String email;
+    public String dp;
     public String location;
     public String crops;
     public String mnum;
@@ -23,11 +23,13 @@ public class User {
 
 
 
-    public User(String name, String location,String crops,String mnum) {
+    public User(String name, String location,String crops,String mnum,String dp) {
         this.name = name;
         this.location=location;
         this.crops=crops;
         this.mnum=mnum;
+        this.dp=dp;
+
 
 
     }

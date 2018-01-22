@@ -2,6 +2,8 @@ package com.example.useri.myapplication4;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -15,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -57,6 +60,8 @@ public class farmerdb extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
+                spinner.getPopupBackground().setColorFilter(Color.parseColor("#80FFFFFF"), PorterDuff.Mode.SRC_ATOP);
+
 
 
 
@@ -78,6 +83,7 @@ public class farmerdb extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
+                spinner1.getPopupBackground().setColorFilter(Color.parseColor("#80FFFFFF"), PorterDuff.Mode.SRC_ATOP);
 
             }
 
@@ -102,6 +108,7 @@ public class farmerdb extends AppCompatActivity {
              String location= spinner1.getSelectedItem().toString();
              String crops= spinner.getSelectedItem().toString();
              String mnum=inputMnum.getText().toString();
+             String dp ="nul";
 
              progressDialog = new ProgressDialog(farmerdb.this,R.style.AppCompatAlertDialogStyle);
              progressDialog.setMessage("Submitting Details..."); // Setting Message
@@ -143,9 +150,9 @@ public class farmerdb extends AppCompatActivity {
                  Toast.makeText(getApplicationContext(), "Enter Mobile Number!", Toast.LENGTH_SHORT).show();
                  return;
              }
-             userId = mFirebaseDatabase.push().getKey();
+             userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-         User user = new User(name,crops,location,mnum);
+         User user = new User(name,location,crops,mnum,dp);
                 mFirebaseDatabase.child(userId).setValue(user);
 
              progressDialog.dismiss();

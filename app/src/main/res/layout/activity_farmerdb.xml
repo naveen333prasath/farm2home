@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
+    android:background="@drawable/crop91"
     tools:context="com.example.useri.myapplication4.Main2Activity">
 
 
@@ -40,7 +40,7 @@
             android:paddingRight="16dp"
             android:paddingTop="10dp"
             android:text="Name :"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             />
 
@@ -50,10 +50,10 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:hint="Enter your name"
-            android:background="@color/black_overlay"
+            android:background="@drawable/backdround_rec_trans"
             android:maxLines="1"
-            android:textColor="#fff"
-            android:textColorHint="#000" />
+            android:textColor="@color/black"
+            android:textColorHint="@color/black_overlay" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:paddingRight="16dp"
             android:paddingTop="10dp"
             android:text="Number:"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <EditText
@@ -76,10 +76,10 @@
             android:layout_width="295dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:background="@color/black_overlay"
+            android:background="@drawable/backdround_rec_trans"
             android:hint="Enter Mobile Number"
-            android:textColor="#fff"
-            android:textColorHint="#000" />
+            android:textColor="#000"
+            android:textColorHint="@color/black_overlay" />
 
     </LinearLayout>
 
@@ -96,7 +96,7 @@
             android:paddingRight="16dp"
             android:paddingTop="10dp"
             android:text="Crops :"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <Spinner
@@ -107,7 +107,8 @@
             android:layout_centerVertical="true"
             android:prompt="@string/dialog_cancel"
             android:spinnerMode="dropdown"
-            android:background="@color/black_overlay"/>
+            android:background="@drawable/backdround_rec_trans"
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -122,7 +123,7 @@
             android:paddingRight="16dp"
             android:paddingTop="10dp"
             android:text="Location:"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <Spinner
@@ -133,7 +134,8 @@
             android:layout_centerVertical="true"
             android:prompt="@string/dialog_cancel"
             android:spinnerMode="dropdown"
-            android:background="@color/black_overlay"/>
+            android:background="@drawable/backdround_rec_trans"
+            />
 
 
     </LinearLayout>

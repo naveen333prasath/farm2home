@@ -3,7 +3,11 @@ package com.example.useri.myapplication4;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,11 +29,23 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.InputStream;
+import java.net.URL;
 
 
 /**
@@ -56,9 +73,16 @@ public class profileFragment extends Fragment {
     ProgressDialog progressDialog;
     private static final int GALLERY_REQUEST=1;
     private ImageButton image;
-    private EditText display;
-    private Button set;
+    private  Button set;
+    private DatabaseReference databaseusers;
+    private FirebaseDatabase ref;
+    private StorageReference storageimage;
+    Bitmap Imagebitmap;
+    String dp1;
+
+
     private Uri imageUri=null,resultUri=null;
+    Activity a;
     public profileFragment() {
         // Required empty public constructor
     }
@@ -96,8 +120,12 @@ public class profileFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            Toast.makeText(context,"Informations",Toast.LENGTH_LONG).show();
+
+
+
+
         }
+
     }
 
     @Override
@@ -106,9 +134,20 @@ public class profileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         Button btn = (Button) view.findViewById(R.id.check);
-        Button set=(Button)view.findViewById(R.id.set);
-        ImageButton image=(ImageButton)view.findViewById(R.id.displaypicture);
-        EditText display=(EditText)view.findViewById(R.id.disp);
+        TextView locat=(TextView)view.findViewById(R.id.loc);
+        TextView names=(TextView)view.findViewById(R.id.nm);
+        TextView mnumber=(TextView)view.findViewById(R.id.num);
+        TextView crop=(TextView)view.findViewById(R.id.item);
+
+         image=(ImageButton)view.findViewById(R.id.img);
+         set=view.findViewById(R.id.set1);
+         String user_id=FirebaseAuth.getInstance().getCurrentUser().getUid();
+         storageimage= FirebaseStorage.getInstance().getReference().child("Dp");
+         databaseusers= FirebaseDatabase.getInstance().getReference().child("Farmers");
+
+
+        auth=FirebaseAuth.getInstance();
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,47 +180,155 @@ public class profileFragment extends Fragment {
 
 //                Intent intent = new Intent(getActivity().getApplication(), MainActivity.class);
 //                startActivity(intent);
-            else{
+                else{
                     Toast.makeText(getActivity().getApplication(), getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
 
                 }}
 
         });
 
-        image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent gallery=new Intent(Intent.ACTION_GET_CONTENT);
-                gallery.setType("image/*");
-                startActivityForResult(gallery,GALLERY_REQUEST);
-            }
-        });
-
-    return view;
-    }
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == GALLERY_REQUEST && resultCode == Activity.RESULT_OK)
-            imageUri = data.getData();
 
 
-            CropImage.activity(imageUri)
-                    .setGuidelines(CropImageView.Guidelines.ON)
-                    .setAspectRatio(1, 1)
-                    .start(getActivity());
 
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == Activity.RESULT_OK) {
+        {
 
-                 resultUri = result.getUri();
-                image.setImageURI(resultUri);
 
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
-            }
+
+
+
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Farmers").child(user_id);
+            ValueEventListener eventListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String name = dataSnapshot.child("name").getValue(String.class);
+                    String mnum = dataSnapshot.child("mnum").getValue(String.class);
+                    String location = dataSnapshot.child("location").getValue(String.class);
+                    String crops = dataSnapshot.child("crops").getValue(String.class);
+                    String dp=dataSnapshot.child("dp").getValue(String.class);
+
+                    locat.setText(location);
+                    names.setText(name);
+                    crop.setText(crops);
+                    mnumber.setText(mnum);
+                    new ImageLoaderClass().execute(dp);
+
+try{
+                    if(dp.equals("nul"))
+                    {
+
+                        image.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent gallery=new Intent(Intent.ACTION_GET_CONTENT);
+                                gallery.setType("image/*");
+                                startActivityForResult(gallery,GALLERY_REQUEST);
+                            }
+                        });
+                        set.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                StartSetupAccount();
+                                progressDialog = new ProgressDialog(getActivity(), R.style.AppCompatAlertDialogStyle);
+                                progressDialog.setMessage("Setting Dp..."); // Setting Message
+                                progressDialog.setTitle(""); // Setting Title
+                                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
+                                progressDialog.show(); // Display Progress Dialog
+                                progressDialog.setCancelable(false);
+
+
+                                new Thread(new Runnable() {
+                                    public void run() {
+                                        try {
+
+
+                                            Thread.sleep(7000);
+                                            progressDialog.dismiss();
+                                            startActivity(new Intent(getActivity(), Main3Activity.class));
+
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    }
+                                }).start();
+
+
+
+                            }
+                        });
+                    }
+
+
+
+                }
+                catch (Exception e){
+                    startActivity(new Intent(getActivity(), MainActivity.class));
+
+                }
+                }
+
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+            reference.addListenerForSingleValueEvent(eventListener);
         }
 
+        return view;
+    }
+
+    private void StartSetupAccount() {
+
+        if(imageUri!=null)
+        {
+            StorageReference filepath = storageimage.child(imageUri.getLastPathSegment());
+            String userid=auth.getCurrentUser().getUid();
+            filepath.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    Uri downloaduri=taskSnapshot.getDownloadUrl();
+
+
+                    databaseusers.child(userid).child("dp").setValue(downloaduri.toString());
+                }
+
+            });
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GALLERY_REQUEST && resultCode == Activity.RESULT_OK);
+        imageUri=data.getData();
+        image.setImageURI(imageUri);
+
+    }
+    private class ImageLoaderClass extends AsyncTask<String, String, Bitmap> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+        protected Bitmap doInBackground(String... args) {
+            try {
+                Imagebitmap = BitmapFactory.decodeStream((InputStream)new URL(args[0]).getContent());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return Imagebitmap;
+        }
+
+        protected void onPostExecute(Bitmap image1) {
+
+            if(image1 != null){
+                image.setImageBitmap(image1);
+
+            }
+        }
     }
 
 
