@@ -9,25 +9,25 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="280dp"
-        android:layout_height="165dp"
+        android:layout_width="258dp"
+        android:layout_height="98dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/farm1" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PAY USING"
-        android:textSize="20sp"
+        android:layout_width="303dp"
+        android:layout_height="41dp"
+        android:layout_gravity="center_horizontal"
+        android:text="PAYMENT METHOD"
         android:textColor="#000"
-        android:layout_gravity="center_horizontal"/>
+        android:textSize="20sp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:src="@drawable/paytm_logo"
+        android:id="@+id/paytm"
         android:layout_marginTop="40dp"
-        />
+        android:src="@drawable/paytm_logo" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -41,12 +41,11 @@
         android:layout_marginTop="40dp"
         android:src="@drawable/credit" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_width="176dp"
+        android:layout_height="74dp"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:text="Thank you visit again"
-        android:textColor="#000"
-        android:textSize="15sp" />
+        android:layout_marginTop="40dp"
+        android:background="@drawable/cashondelivery" />
+
 </LinearLayout>

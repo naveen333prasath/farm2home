@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#fff"
+    android:background="#f7f7f7"
     tools:context="com.example.useri.myapplication4.Main3Activity">
 
 
     <FrameLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="580dp">
+        android:layout_height="585dp">
 
 
     </FrameLayout>
@@ -26,7 +26,7 @@
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:background="?android:attr/windowBackground"
-        android:backgroundTint="#fff"
+        android:backgroundTint="#f7f7f7"
         app:itemIconTint="@drawable/botton_nav_colors"
         app:itemTextColor="@drawable/botton_nav_colors"
         app:layout_constraintBottom_toBottomOf="parent"

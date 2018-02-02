@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profil"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="Profile" />
 
     <item
-        android:id="@+id/marketplace"
+        android:id="@+id/marketplac"
         android:icon="@drawable/ic_store_black_24dp"
         android:title="Shop" />
 

@@ -17,8 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 
@@ -43,6 +45,8 @@ public class marketplaceFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
     private RecyclerView story;
     private DatabaseReference database;
+    private DatabaseReference crntuser;
+    private Query uquery;
 
     public marketplaceFragment() {
         // Required empty public constructor
@@ -81,6 +85,8 @@ public class marketplaceFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_marketplace, container, false);
         database= FirebaseDatabase.getInstance().getReference().child("Posts");
+        String user_id= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        uquery=database.orderByChild("fid").equalTo(user_id);
         story=(RecyclerView)view.findViewById(R.id.recycle);
         story.setHasFixedSize(true);
         story.setLayoutManager(new LinearLayoutManager(getActivity().getApplication()));
@@ -98,11 +104,13 @@ public class marketplaceFragment extends Fragment {
                 blog.class,
                 R.layout.story_activity,
                 BlogViewHolder.class,
-                database
+                uquery
 
         ) {
             @Override
             protected void populateViewHolder(BlogViewHolder viewHolder, blog model, int position) {
+
+
 
                 viewHolder.setItem(model.getItem());
                 viewHolder.setprice(model.getPrice());
@@ -146,7 +154,6 @@ public class marketplaceFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            Toast.makeText(context,"Marketplace",Toast.LENGTH_LONG).show();
         }
     }
 

@@ -73,7 +73,7 @@ public class profileFragment extends Fragment {
     ProgressDialog progressDialog;
     private static final int GALLERY_REQUEST=1;
     private ImageButton image;
-    private  Button set;
+    private  Button set,future;
     private DatabaseReference databaseusers;
     private FirebaseDatabase ref;
     private StorageReference storageimage;
@@ -134,6 +134,8 @@ public class profileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         Button btn = (Button) view.findViewById(R.id.check);
+        Button future = (Button) view.findViewById(R.id.fut);
+
         TextView locat=(TextView)view.findViewById(R.id.loc);
         TextView names=(TextView)view.findViewById(R.id.nm);
         TextView mnumber=(TextView)view.findViewById(R.id.num);
@@ -147,6 +149,14 @@ public class profileFragment extends Fragment {
 
 
         auth=FirebaseAuth.getInstance();
+
+future.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent in = new Intent(getActivity().getApplication(), futurepredict.class);
+        startActivity(in);
+    }
+});
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -31,6 +31,7 @@
         android:layout_gravity="center"
         android:textSize="20dp"
         />
+
     <Button
         android:id="@+id/set1"
         android:layout_width="170dp"
@@ -115,14 +116,22 @@
 
         </LinearLayout>
 
-
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/fut"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:text="Predict Future"
+            android:background="@drawable/background_login_four"/>
         <Button
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="150dp"
             android:text="Logout"
+            android:textColor="@color/black_overlay"
             android:autofillHints="@color/black"
             android:background="@drawable/background_login_three"
             android:id="@+id/check"/>

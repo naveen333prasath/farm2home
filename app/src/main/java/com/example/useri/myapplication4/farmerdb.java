@@ -110,7 +110,7 @@ public class farmerdb extends AppCompatActivity {
              String mnum=inputMnum.getText().toString();
              String dp ="nul";
 
-             progressDialog = new ProgressDialog(farmerdb.this,R.style.AppCompatAlertDialogStyle);
+             progressDialog = new ProgressDialog( farmerdb.this,R.style.AppCompatAlertDialogStyle);
              progressDialog.setMessage("Submitting Details..."); // Setting Message
              progressDialog.setTitle(""); // Setting Title
              progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER); // Progress Dialog Style Spinner
